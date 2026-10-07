@@ -19,6 +19,7 @@ const receiptItems = document.querySelector("#receipt-items");
 const receiptTotal = document.querySelector("#receipt-total");
 const receiptAmountPaid = document.querySelector("#receipt-amount-paid");
 const receiptChange = document.querySelector("#receipt-change");
+const newTransactionButton = document.querySelector("#new-transaction");
 
 let transactionSequence = 0;
 
@@ -63,6 +64,35 @@ function generateReceipt(total, amountPaid, change) {
     receiptAmountPaid.textContent = formatCurrency(amountPaid);
     receiptChange.textContent = formatCurrency(change);
     receiptSection.hidden = false;
+}
+
+function startNewTransaction() {
+    const shouldStartNewTransaction = window.confirm(
+        "Start a new transaction? The current order and receipt will be cleared."
+    );
+
+    if (!shouldStartNewTransaction) {
+        return;
+    }
+
+    cart.length = 0;
+    cashPayment.value = "";
+
+    paymentMessage.textContent = "";
+    paymentMessage.className = "payment-message";
+    paymentSummary.hidden = true;
+    summaryAmountPaid.textContent = formatCurrency(0);
+    summaryTotalAmount.textContent = formatCurrency(0);
+    summaryChange.textContent = formatCurrency(0);
+
+    receiptItems.innerHTML = "";
+    transactionReference.textContent = "";
+    receiptTotal.textContent = formatCurrency(0);
+    receiptAmountPaid.textContent = formatCurrency(0);
+    receiptChange.textContent = formatCurrency(0);
+    receiptSection.hidden = true;
+
+    renderCart();
 }
 
 function addToCart(product) {
@@ -188,3 +218,4 @@ cartItems.addEventListener("click", (event) => {
 });
 
 confirmPaymentButton.addEventListener("click", confirmPayment);
+newTransactionButton.addEventListener("click", startNewTransaction);
