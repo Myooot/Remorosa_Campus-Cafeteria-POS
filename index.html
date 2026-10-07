@@ -11,123 +11,154 @@
         <header class="page-header">
             <p class="eyebrow">IT 415 Practical Examination</p>
             <h1>Campus Cafeteria POS</h1>
-            <p>Select an item from the cafeteria menu.</p>
+            <p>Build the order, accept payment, and review the digital receipt.</p>
         </header>
 
-        <section class="products-section" aria-labelledby="products-heading">
-            <h2 id="products-heading">Available Products</h2>
-
-            <div class="product-grid">
-                <article class="product-card">
-                    <h3>Rice (Plain)</h3>
-                    <p class="price">&#8369;15.00</p>
-                    <button class="add-to-cart" type="button" data-id="rice" data-name="Rice (Plain)" data-price="15">Add to Cart</button>
-                </article>
-
-                <article class="product-card">
-                    <h3>Fried Chicken (1 pc)</h3>
-                    <p class="price">&#8369;65.00</p>
-                    <button class="add-to-cart" type="button" data-id="fried-chicken" data-name="Fried Chicken (1 pc)" data-price="65">Add to Cart</button>
-                </article>
-
-                <article class="product-card">
-                    <h3>Pork Adobo</h3>
-                    <p class="price">&#8369;60.00</p>
-                    <button class="add-to-cart" type="button" data-id="pork-adobo" data-name="Pork Adobo" data-price="60">Add to Cart</button>
-                </article>
-
-                <article class="product-card">
-                    <h3>Vegetable Side Dish</h3>
-                    <p class="price">&#8369;35.00</p>
-                    <button class="add-to-cart" type="button" data-id="vegetable-side" data-name="Vegetable Side Dish" data-price="35">Add to Cart</button>
-                </article>
-
-                <article class="product-card">
-                    <h3>Iced Tea (cup)</h3>
-                    <p class="price">&#8369;20.00</p>
-                    <button class="add-to-cart" type="button" data-id="iced-tea" data-name="Iced Tea (cup)" data-price="20">Add to Cart</button>
-                </article>
-
-                <article class="product-card">
-                    <h3>Bottled Water</h3>
-                    <p class="price">&#8369;20.00</p>
-                    <button class="add-to-cart" type="button" data-id="bottled-water" data-name="Bottled Water" data-price="20">Add to Cart</button>
-                </article>
-            </div>
-        </section>
-
-        <section class="cart-section" aria-labelledby="cart-heading">
-            <h2 id="cart-heading">Current Order</h2>
-
-            <div class="cart-panel">
-                <p id="empty-cart-message">Your cart is empty.</p>
-
-                <table id="cart-table" hidden>
-                    <thead>
-                        <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col">Unit Price</th>
-                            <th scope="col">Quantity</th>
-                            <th scope="col">Subtotal</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="cart-items"></tbody>
-                </table>
-
-                <div class="order-total" aria-live="polite">
-                    <span>Order Total</span>
-                    <strong id="order-total">&#8369;0.00</strong>
-                </div>
-            </div>
-        </section>
-
-        <section class="payment-section" aria-labelledby="payment-heading">
-            <h2 id="payment-heading">Payment</h2>
-
-            <div class="payment-panel">
-                <div class="amount-due" aria-live="polite">
-                    <span>Total Amount Due</span>
-                    <strong id="payment-total">&#8369;0.00</strong>
-                </div>
-
-                <div class="payment-form">
-                    <label for="cash-payment">Customer Cash Payment</label>
-                    <input
-                        id="cash-payment"
-                        type="number"
-                        min="0"
-                        step="0.01"
-                        placeholder="0.00"
-                        inputmode="decimal"
-                    >
-                    <button id="confirm-payment" type="button" disabled>Confirm Payment</button>
-                </div>
-
-                <p id="payment-message" class="payment-message" aria-live="polite"></p>
-
-                <div id="payment-summary" class="payment-summary" hidden>
-                    <div class="payment-success-heading">
-                        <span aria-hidden="true">&#10003;</span>
-                        <strong>Payment Successful</strong>
+        <div class="pos-workspace">
+            <section class="products-section" aria-labelledby="products-heading">
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">Menu</p>
+                        <h2 id="products-heading">Available Products</h2>
                     </div>
-                    <dl>
-                        <div>
-                            <dt>Amount Paid</dt>
-                            <dd id="summary-amount-paid">&#8369;0.00</dd>
-                        </div>
-                        <div>
-                            <dt>Total Amount</dt>
-                            <dd id="summary-total-amount">&#8369;0.00</dd>
-                        </div>
-                        <div class="change-row">
-                            <dt>Change</dt>
-                            <dd id="summary-change">&#8369;0.00</dd>
-                        </div>
-                    </dl>
+                    <p>Choose an item to add it to the current order.</p>
                 </div>
+
+                <div class="product-grid">
+                    <article class="product-card">
+                        <h3>Rice (Plain)</h3>
+                        <p class="price">&#8369;15.00</p>
+                        <button class="add-to-cart" type="button" data-id="rice" data-name="Rice (Plain)" data-price="15">Add to Cart</button>
+                    </article>
+
+                    <article class="product-card">
+                        <h3>Fried Chicken (1 pc)</h3>
+                        <p class="price">&#8369;65.00</p>
+                        <button class="add-to-cart" type="button" data-id="fried-chicken" data-name="Fried Chicken (1 pc)" data-price="65">Add to Cart</button>
+                    </article>
+
+                    <article class="product-card">
+                        <h3>Pork Adobo</h3>
+                        <p class="price">&#8369;60.00</p>
+                        <button class="add-to-cart" type="button" data-id="pork-adobo" data-name="Pork Adobo" data-price="60">Add to Cart</button>
+                    </article>
+
+                    <article class="product-card">
+                        <h3>Vegetable Side Dish</h3>
+                        <p class="price">&#8369;35.00</p>
+                        <button class="add-to-cart" type="button" data-id="vegetable-side" data-name="Vegetable Side Dish" data-price="35">Add to Cart</button>
+                    </article>
+
+                    <article class="product-card">
+                        <h3>Iced Tea (cup)</h3>
+                        <p class="price">&#8369;20.00</p>
+                        <button class="add-to-cart" type="button" data-id="iced-tea" data-name="Iced Tea (cup)" data-price="20">Add to Cart</button>
+                    </article>
+
+                    <article class="product-card">
+                        <h3>Bottled Water</h3>
+                        <p class="price">&#8369;20.00</p>
+                        <button class="add-to-cart" type="button" data-id="bottled-water" data-name="Bottled Water" data-price="20">Add to Cart</button>
+                    </article>
+                </div>
+            </section>
+
+            <div class="checkout-column">
+                <section class="cart-section" aria-labelledby="cart-heading">
+                    <div class="section-heading compact">
+                        <div>
+                            <p class="section-kicker">Order</p>
+                            <h2 id="cart-heading">Current Order</h2>
+                        </div>
+                    </div>
+
+                    <div class="cart-panel">
+                        <div id="empty-cart-message" class="empty-cart-state">
+                            <span class="empty-cart-icon" aria-hidden="true">&#128722;</span>
+                            <strong>Your cart is empty</strong>
+                            <span>Add a product from the menu to begin.</span>
+                        </div>
+
+                        <div class="table-scroll">
+                            <table id="cart-table" hidden>
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Unit Price</th>
+                                        <th scope="col">Quantity</th>
+                                        <th scope="col">Subtotal</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="cart-items"></tbody>
+                            </table>
+                        </div>
+
+                        <div class="order-total" aria-live="polite">
+                            <span>Order Total</span>
+                            <strong id="order-total">&#8369;0.00</strong>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="payment-section" aria-labelledby="payment-heading">
+                    <div class="section-heading compact">
+                        <div>
+                            <p class="section-kicker">Checkout</p>
+                            <h2 id="payment-heading">Payment</h2>
+                        </div>
+                    </div>
+
+                    <div class="payment-panel">
+                        <div class="amount-due" aria-live="polite">
+                            <span>Total Amount Due</span>
+                            <strong id="payment-total">&#8369;0.00</strong>
+                        </div>
+
+                        <div class="payment-form">
+                            <div class="payment-field">
+                                <label for="cash-payment">Customer Cash Payment</label>
+                                <div class="money-input">
+                                    <span aria-hidden="true">&#8369;</span>
+                                    <input
+                                        id="cash-payment"
+                                        type="number"
+                                        min="0"
+                                        step="0.01"
+                                        placeholder="0.00"
+                                        inputmode="decimal"
+                                    >
+                                </div>
+                            </div>
+                            <button id="confirm-payment" type="button" disabled>Confirm Payment</button>
+                        </div>
+
+                        <p id="payment-message" class="payment-message" aria-live="polite"></p>
+
+                        <div id="payment-summary" class="payment-summary" hidden>
+                            <div class="payment-success-heading">
+                                <span aria-hidden="true">&#10003;</span>
+                                <strong>Payment Successful</strong>
+                            </div>
+                            <dl>
+                                <div>
+                                    <dt>Amount Paid</dt>
+                                    <dd id="summary-amount-paid">&#8369;0.00</dd>
+                                </div>
+                                <div>
+                                    <dt>Total Amount</dt>
+                                    <dd id="summary-total-amount">&#8369;0.00</dd>
+                                </div>
+                                <div class="change-row">
+                                    <dt>Change</dt>
+                                    <dd id="summary-change">&#8369;0.00</dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </section>
+        </div>
 
         <section id="receipt-section" class="receipt-section" aria-labelledby="receipt-heading" hidden>
             <div class="receipt-card">
