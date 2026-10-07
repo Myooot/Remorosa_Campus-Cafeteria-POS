@@ -110,7 +110,7 @@ function confirmPayment() {
         const change = cashAmount - total;
 
         paymentMessage.className = "payment-message success";
-        paymentMessage.textContent = "Payment confirmed.";
+        paymentMessage.textContent = "Payment successful.";
         summaryAmountPaid.textContent = formatCurrency(cashAmount);
         summaryTotalAmount.textContent = formatCurrency(total);
         summaryChange.textContent = formatCurrency(change);

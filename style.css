@@ -308,6 +308,27 @@ th {
     background-color: #ecfdf5;
 }
 
+.payment-success-heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #a7f3d0;
+    color: #047857;
+    font-size: 1.2rem;
+}
+
+.payment-success-heading span {
+    display: grid;
+    width: 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 50%;
+    color: #ffffff;
+    background-color: #047857;
+}
+
 .payment-summary dl {
     margin: 0;
 }
