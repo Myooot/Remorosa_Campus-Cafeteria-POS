@@ -9,6 +9,10 @@ const paymentTotal = document.querySelector("#payment-total");
 const cashPayment = document.querySelector("#cash-payment");
 const confirmPaymentButton = document.querySelector("#confirm-payment");
 const paymentMessage = document.querySelector("#payment-message");
+const paymentSummary = document.querySelector("#payment-summary");
+const summaryAmountPaid = document.querySelector("#summary-amount-paid");
+const summaryTotalAmount = document.querySelector("#summary-total-amount");
+const summaryChange = document.querySelector("#summary-change");
 
 function formatCurrency(amount) {
     return `₱${amount.toFixed(2)}`;
@@ -84,6 +88,7 @@ function renderCart() {
     confirmPaymentButton.disabled = cart.length === 0;
     paymentMessage.textContent = "";
     paymentMessage.className = "payment-message";
+    paymentSummary.hidden = true;
     emptyCartMessage.hidden = cart.length > 0;
     cartTable.hidden = cart.length === 0;
 }
@@ -93,6 +98,7 @@ function confirmPayment() {
     const cashAmount = Number(cashPayment.value);
 
     paymentMessage.className = "payment-message error";
+    paymentSummary.hidden = true;
 
     if (total === 0) {
         paymentMessage.textContent = "Add at least one product before paying.";
@@ -101,8 +107,14 @@ function confirmPayment() {
     } else if (cashAmount < total) {
         paymentMessage.textContent = `Insufficient payment. Please enter at least ${formatCurrency(total)}.`;
     } else {
+        const change = cashAmount - total;
+
         paymentMessage.className = "payment-message success";
         paymentMessage.textContent = "Payment confirmed.";
+        summaryAmountPaid.textContent = formatCurrency(cashAmount);
+        summaryTotalAmount.textContent = formatCurrency(total);
+        summaryChange.textContent = formatCurrency(change);
+        paymentSummary.hidden = false;
     }
 }
 

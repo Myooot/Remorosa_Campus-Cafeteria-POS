@@ -299,3 +299,39 @@ th {
 .payment-message.success {
     color: #047857;
 }
+
+.payment-summary {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #a7f3d0;
+    border-radius: 8px;
+    background-color: #ecfdf5;
+}
+
+.payment-summary dl {
+    margin: 0;
+}
+
+.payment-summary dl > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 8px 0;
+}
+
+.payment-summary dt {
+    color: #4b5563;
+}
+
+.payment-summary dd {
+    margin: 0;
+    font-weight: 700;
+}
+
+.payment-summary .change-row {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid #a7f3d0;
+    color: #047857;
+    font-size: 1.2rem;
+}
