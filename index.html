@@ -128,6 +128,43 @@
                 </div>
             </div>
         </section>
+
+        <section id="receipt-section" class="receipt-section" aria-labelledby="receipt-heading" hidden>
+            <div class="receipt-card">
+                <header class="receipt-header">
+                    <p class="receipt-label">Digital Receipt</p>
+                    <h2 id="receipt-heading">Campus Cafeteria</h2>
+                    <p>Transaction Reference: <strong id="transaction-reference"></strong></p>
+                </header>
+
+                <table class="receipt-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Qty</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="receipt-items"></tbody>
+                </table>
+
+                <dl class="receipt-totals">
+                    <div>
+                        <dt>Total Amount</dt>
+                        <dd id="receipt-total">&#8369;0.00</dd>
+                    </div>
+                    <div>
+                        <dt>Amount Paid</dt>
+                        <dd id="receipt-amount-paid">&#8369;0.00</dd>
+                    </div>
+                    <div class="receipt-change">
+                        <dt>Change</dt>
+                        <dd id="receipt-change">&#8369;0.00</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>

@@ -13,6 +13,14 @@ const paymentSummary = document.querySelector("#payment-summary");
 const summaryAmountPaid = document.querySelector("#summary-amount-paid");
 const summaryTotalAmount = document.querySelector("#summary-total-amount");
 const summaryChange = document.querySelector("#summary-change");
+const receiptSection = document.querySelector("#receipt-section");
+const transactionReference = document.querySelector("#transaction-reference");
+const receiptItems = document.querySelector("#receipt-items");
+const receiptTotal = document.querySelector("#receipt-total");
+const receiptAmountPaid = document.querySelector("#receipt-amount-paid");
+const receiptChange = document.querySelector("#receipt-change");
+
+let transactionSequence = 0;
 
 function formatCurrency(amount) {
     return `₱${amount.toFixed(2)}`;
@@ -23,6 +31,38 @@ function getOrderTotal() {
         (sum, item) => sum + item.price * item.quantity,
         0
     );
+}
+
+function generateTransactionReference() {
+    transactionSequence += 1;
+    const timestamp = Date.now();
+    const sequence = String(transactionSequence).padStart(3, "0");
+
+    return `CAF-${timestamp}-${sequence}`;
+}
+
+function generateReceipt(total, amountPaid, change) {
+    receiptItems.innerHTML = "";
+
+    cart.forEach((item) => {
+        const row = document.createElement("tr");
+        const itemSubtotal = item.price * item.quantity;
+
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>${item.quantity}</td>
+            <td>${formatCurrency(item.price)}</td>
+            <td>${formatCurrency(itemSubtotal)}</td>
+        `;
+
+        receiptItems.appendChild(row);
+    });
+
+    transactionReference.textContent = generateTransactionReference();
+    receiptTotal.textContent = formatCurrency(total);
+    receiptAmountPaid.textContent = formatCurrency(amountPaid);
+    receiptChange.textContent = formatCurrency(change);
+    receiptSection.hidden = false;
 }
 
 function addToCart(product) {
@@ -89,6 +129,7 @@ function renderCart() {
     paymentMessage.textContent = "";
     paymentMessage.className = "payment-message";
     paymentSummary.hidden = true;
+    receiptSection.hidden = true;
     emptyCartMessage.hidden = cart.length > 0;
     cartTable.hidden = cart.length === 0;
 }
@@ -99,6 +140,7 @@ function confirmPayment() {
 
     paymentMessage.className = "payment-message error";
     paymentSummary.hidden = true;
+    receiptSection.hidden = true;
 
     if (total === 0) {
         paymentMessage.textContent = "Add at least one product before paying.";
@@ -115,6 +157,7 @@ function confirmPayment() {
         summaryTotalAmount.textContent = formatCurrency(total);
         summaryChange.textContent = formatCurrency(change);
         paymentSummary.hidden = false;
+        generateReceipt(total, cashAmount, change);
     }
 }
 

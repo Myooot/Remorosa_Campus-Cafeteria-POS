@@ -356,3 +356,71 @@ th {
     color: #047857;
     font-size: 1.2rem;
 }
+
+.receipt-section {
+    margin-top: 48px;
+}
+
+.receipt-card {
+    width: min(720px, 100%);
+    margin: 0 auto;
+    overflow: hidden;
+    border: 1px solid #d1d5db;
+    border-radius: 12px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgb(15 23 42 / 6%);
+}
+
+.receipt-header {
+    padding: 28px 24px 20px;
+    text-align: center;
+}
+
+.receipt-label {
+    margin-bottom: 8px;
+    color: #047857;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.receipt-header h2 {
+    margin-bottom: 10px;
+    font-size: 1.7rem;
+}
+
+.receipt-header p:last-child {
+    margin-bottom: 0;
+    color: #4b5563;
+}
+
+.receipt-table th:nth-child(n + 2),
+.receipt-table td:nth-child(n + 2) {
+    text-align: right;
+}
+
+.receipt-totals {
+    margin: 0;
+    padding: 20px 24px 24px;
+}
+
+.receipt-totals > div {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 7px 0;
+}
+
+.receipt-totals dd {
+    margin: 0;
+    font-weight: 700;
+}
+
+.receipt-totals .receipt-change {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid #d1d5db;
+    color: #047857;
+    font-size: 1.15rem;
+}
