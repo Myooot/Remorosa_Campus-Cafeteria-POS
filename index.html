@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Cafeteria POS</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main class="pos-container">
+        <header class="page-header">
+            <p class="eyebrow">IT 415 Practical Examination</p>
+            <h1>Campus Cafeteria POS</h1>
+            <p>Select an item from the cafeteria menu.</p>
+        </header>
+
+        <section class="products-section" aria-labelledby="products-heading">
+            <h2 id="products-heading">Available Products</h2>
+
+            <div class="product-grid">
+                <article class="product-card">
+                    <h3>Rice (Plain)</h3>
+                    <p class="price">&#8369;15.00</p>
+                    <button class="add-to-cart" type="button" data-id="rice" data-name="Rice (Plain)" data-price="15">Add to Cart</button>
+                </article>
+
+                <article class="product-card">
+                    <h3>Fried Chicken (1 pc)</h3>
+                    <p class="price">&#8369;65.00</p>
+                    <button class="add-to-cart" type="button" data-id="fried-chicken" data-name="Fried Chicken (1 pc)" data-price="65">Add to Cart</button>
+                </article>
+
+                <article class="product-card">
+                    <h3>Pork Adobo</h3>
+                    <p class="price">&#8369;60.00</p>
+                    <button class="add-to-cart" type="button" data-id="pork-adobo" data-name="Pork Adobo" data-price="60">Add to Cart</button>
+                </article>
+
+                <article class="product-card">
+                    <h3>Vegetable Side Dish</h3>
+                    <p class="price">&#8369;35.00</p>
+                    <button class="add-to-cart" type="button" data-id="vegetable-side" data-name="Vegetable Side Dish" data-price="35">Add to Cart</button>
+                </article>
+
+                <article class="product-card">
+                    <h3>Iced Tea (cup)</h3>
+                    <p class="price">&#8369;20.00</p>
+                    <button class="add-to-cart" type="button" data-id="iced-tea" data-name="Iced Tea (cup)" data-price="20">Add to Cart</button>
+                </article>
+
+                <article class="product-card">
+                    <h3>Bottled Water</h3>
+                    <p class="price">&#8369;20.00</p>
+                    <button class="add-to-cart" type="button" data-id="bottled-water" data-name="Bottled Water" data-price="20">Add to Cart</button>
+                </article>
+            </div>
+        </section>
+
+        <section class="cart-section" aria-labelledby="cart-heading">
+            <h2 id="cart-heading">Current Order</h2>
+
+            <div class="cart-panel">
+                <p id="empty-cart-message">Your cart is empty.</p>
+
+                <table id="cart-table" hidden>
+                    <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col">Unit Price</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Subtotal</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cart-items"></tbody>
+                </table>
+
+                <div class="order-total" aria-live="polite">
+                    <span>Order Total</span>
+                    <strong id="order-total">&#8369;0.00</strong>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
