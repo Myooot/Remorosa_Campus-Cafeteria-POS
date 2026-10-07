@@ -97,9 +97,9 @@ function confirmPayment() {
     if (total === 0) {
         paymentMessage.textContent = "Add at least one product before paying.";
     } else if (cashPayment.value === "" || !Number.isFinite(cashAmount) || cashAmount < 0) {
-        paymentMessage.textContent = "Enter a valid cash payment amount.";
+        paymentMessage.textContent = "Please enter a valid payment amount.";
     } else if (cashAmount < total) {
-        paymentMessage.textContent = `Insufficient payment. Amount due is ${formatCurrency(total)}.`;
+        paymentMessage.textContent = `Insufficient payment. Please enter at least ${formatCurrency(total)}.`;
     } else {
         paymentMessage.className = "payment-message success";
         paymentMessage.textContent = "Payment confirmed.";
