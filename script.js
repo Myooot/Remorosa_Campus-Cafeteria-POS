@@ -5,9 +5,20 @@ const cartItems = document.querySelector("#cart-items");
 const cartTable = document.querySelector("#cart-table");
 const emptyCartMessage = document.querySelector("#empty-cart-message");
 const orderTotal = document.querySelector("#order-total");
+const paymentTotal = document.querySelector("#payment-total");
+const cashPayment = document.querySelector("#cash-payment");
+const confirmPaymentButton = document.querySelector("#confirm-payment");
+const paymentMessage = document.querySelector("#payment-message");
 
 function formatCurrency(amount) {
     return `₱${amount.toFixed(2)}`;
+}
+
+function getOrderTotal() {
+    return cart.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+    );
 }
 
 function addToCart(product) {
@@ -66,14 +77,33 @@ function renderCart() {
         cartItems.appendChild(row);
     });
 
-    const total = cart.reduce(
-        (sum, item) => sum + item.price * item.quantity,
-        0
-    );
+    const total = getOrderTotal();
 
     orderTotal.textContent = formatCurrency(total);
+    paymentTotal.textContent = formatCurrency(total);
+    confirmPaymentButton.disabled = cart.length === 0;
+    paymentMessage.textContent = "";
+    paymentMessage.className = "payment-message";
     emptyCartMessage.hidden = cart.length > 0;
     cartTable.hidden = cart.length === 0;
+}
+
+function confirmPayment() {
+    const total = getOrderTotal();
+    const cashAmount = Number(cashPayment.value);
+
+    paymentMessage.className = "payment-message error";
+
+    if (total === 0) {
+        paymentMessage.textContent = "Add at least one product before paying.";
+    } else if (cashPayment.value === "" || !Number.isFinite(cashAmount) || cashAmount < 0) {
+        paymentMessage.textContent = "Enter a valid cash payment amount.";
+    } else if (cashAmount < total) {
+        paymentMessage.textContent = `Insufficient payment. Amount due is ${formatCurrency(total)}.`;
+    } else {
+        paymentMessage.className = "payment-message success";
+        paymentMessage.textContent = "Payment confirmed.";
+    }
 }
 
 document.querySelectorAll(".add-to-cart").forEach((button) => {
@@ -101,3 +131,5 @@ cartItems.addEventListener("click", (event) => {
         removeFromCart(button.dataset.id);
     }
 });
+
+confirmPaymentButton.addEventListener("click", confirmPayment);

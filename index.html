@@ -81,6 +81,32 @@
                 </div>
             </div>
         </section>
+
+        <section class="payment-section" aria-labelledby="payment-heading">
+            <h2 id="payment-heading">Payment</h2>
+
+            <div class="payment-panel">
+                <div class="amount-due" aria-live="polite">
+                    <span>Total Amount Due</span>
+                    <strong id="payment-total">&#8369;0.00</strong>
+                </div>
+
+                <div class="payment-form">
+                    <label for="cash-payment">Customer Cash Payment</label>
+                    <input
+                        id="cash-payment"
+                        type="number"
+                        min="0"
+                        step="0.01"
+                        placeholder="0.00"
+                        inputmode="decimal"
+                    >
+                    <button id="confirm-payment" type="button" disabled>Confirm Payment</button>
+                </div>
+
+                <p id="payment-message" class="payment-message" aria-live="polite"></p>
+            </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
